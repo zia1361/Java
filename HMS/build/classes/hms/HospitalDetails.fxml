@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Point3D?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="384.0" prefWidth="629.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hms.HospitalDetailsController">
+   <children>
+      <TextField id="loginId" fx:id="totalIcu" alignment="CENTER" layoutX="163.0" layoutY="120.0" prefHeight="43.0" prefWidth="319.0" promptText="Enter Number of Total ICU" style="-fx-background-color: white; -fx-border-color: lightgreen; -fx-border-radius: 30; -fx-border-width: 2;" />
+      <ComboBox fx:id="status" layoutX="163.0" layoutY="186.0" prefHeight="43.0" prefWidth="319.0" promptText="Select Hospital Status" style="-fx-background-color: white; -fx-border-radius: 30; -fx-border-color: lightgreen; -fx-border-width: 2;" />
+      <TextField id="loginId" fx:id="totalCrWards" alignment="CENTER" disable="true" layoutX="163.0" layoutY="244.0" prefHeight="43.0" prefWidth="319.0" promptText="Enter Number of Total Corona Wards" style="-fx-background-color: white; -fx-border-color: lightgreen; -fx-border-radius: 30; -fx-border-width: 2;" />
+      <Button fx:id="addBtn" layoutX="163.0" layoutY="307.0" mnemonicParsing="false" onAction="#handleAddBtn" prefHeight="35.0" prefWidth="319.0" style="-fx-background-color: Lightgreen; -fx-border-radius: 30;" text="ADD" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <rotationAxis>
+            <Point3D />
+         </rotationAxis>
+      </Button>
+      <CheckBox fx:id="oCBox" alignment="CENTER" contentDisplay="CENTER" layoutX="482.0" layoutY="28.0" mnemonicParsing="false" onAction="#handleCheckBtn" prefHeight="24.0" prefWidth="139.0" style="-fx-background-color: white; -fx-border-color: lightgreen; -fx-border-radius: 10; -fx-border-width: 2;" text="Has Corona Wards" />
+      <Button layoutX="20.0" layoutY="28.0" mnemonicParsing="false" onAction="#handleBackBtn" style="-fx-background-color: white;" text="Back" textFill="#87e48d">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

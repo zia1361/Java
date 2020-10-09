@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="378.0" prefWidth="539.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hms.LoginController">
+    <children>
+      <Accordion />
+      <Button fx:id="loginBtn" layoutX="110.0" layoutY="300.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="35.0" prefWidth="319.0" style="-fx-background-color: Lightgreen; -fx-border-radius: 30;" text="LOGIN" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button id="regesterBtn" fx:id="regesterBtn" layoutX="443.0" layoutY="341.0" mnemonicParsing="false" onAction="#handleRegisterBtn" style="-fx-background-color: white;" text=" Register Now" textFill="#36d074">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Button>
+      <TextField id="loginId" fx:id="loginId" alignment="CENTER" layoutX="110.0" layoutY="180.0" prefHeight="43.0" prefWidth="319.0" promptText="Enter Login Id" style="-fx-background-color: white; -fx-border-color: lightgreen; -fx-border-radius: 30; -fx-border-width: 2;" />
+      <PasswordField id="password" fx:id="password" alignment="CENTER" layoutX="110.0" layoutY="238.0" prefHeight="43.0" prefWidth="319.0" promptText="Enter Password" style="-fx-background-color: white; -fx-border-color: lightgreen; -fx-border-radius: 30; -fx-border-width: 2;" />
+      <Label layoutX="344.0" layoutY="345.0" text="Don't  have an Account?">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="176.0" fitWidth="195.0" layoutX="170.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Images/main.png" />
+         </image>
+      </ImageView>
+      <Pane id="progressPane" fx:id="progressPane" disable="true" prefHeight="378.0" prefWidth="539.0">
+         <children>
+            <ProgressIndicator id="progress" fx:id="progress" layoutX="242.0" layoutY="169.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="53.0" prefWidth="64.0" visible="false" />
+         </children>
+      </Pane>
+    </children>
+</AnchorPane>

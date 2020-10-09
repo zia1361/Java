@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="HMS.jnlp">
+  <information>
+    <title>HMS</title>
+    <vendor>A.U Computer</vendor>
+    <description>null</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="HMS.jar" size="613876" download="eager" />
+    <jar href="lib\mssql-jdbc-8.4.1.jre8.jar" size="1300917" download="eager" />
+  </resources>
+  <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="HMS" >
+    <param name="requiredFXVersion" value="8.0+"/>
+  </applet-desc>
+  <jfx:javafx-desc  width="800" height="600" main-class="hms.HMS"  name="HMS" />
+  <update check="always"/>
+</jnlp>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="439.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hms.RegisterController">
+   <children>
+      <TextField id="email" fx:id="email" alignment="CENTER" layoutX="165.0" layoutY="94.0" prefHeight="37.0" prefWidth="271.0" promptText="ENTER EMAIL" style="-fx-background-color: white; -fx-border-color: lightgreen; -fx-border-radius: 30; -fx-border-width: 2;" />
+      <TextField id="address" fx:id="address" alignment="CENTER" layoutX="165.0" layoutY="141.0" prefHeight="37.0" prefWidth="271.0" promptText="ENTER ADDRESS" style="-fx-background-color: white; -fx-border-color: lightgreen; -fx-border-radius: 30; -fx-border-width: 2;" />
+      <TextField id="phoneNumber" fx:id="phoneNumber" alignment="CENTER" layoutX="165.0" layoutY="190.0" prefHeight="37.0" prefWidth="271.0" promptText="ENTER PHONE NUMBER" style="-fx-background-color: white; -fx-border-color: lightgreen; -fx-border-radius: 30; -fx-border-width: 2;" />
+      <TextField id="loginId" fx:id="loginId" alignment="CENTER" layoutX="165.0" layoutY="237.0" prefHeight="37.0" prefWidth="271.0" promptText="ENTER LOGIN ID" style="-fx-background-color: white; -fx-border-color: lightgreen; -fx-border-radius: 30; -fx-border-width: 2;" />
+      <TextField id="name" fx:id="name" alignment="CENTER" layoutX="165.0" layoutY="46.0" prefHeight="37.0" prefWidth="271.0" promptText="ENTER HOSPITAL NAME" style="-fx-background-color: white; -fx-border-color: lightgreen; -fx-border-radius: 30; -fx-border-width: 2;" />
+      <PasswordField id="password" fx:id="password" alignment="CENTER" layoutX="165.0" layoutY="287.0" prefHeight="37.0" prefWidth="271.0" promptText="ENTER PASSWORD" style="-fx-background-color: white; -fx-border-color: lightgreen; -fx-border-radius: 30; -fx-border-width: 2;" />
+      <Label layoutX="404.0" layoutY="403.0" prefHeight="15.0" prefWidth="133.0" text="Alread have an Account?">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+      <Button id="regesterBtn" fx:id="regesterBtn" contentDisplay="CENTER" layoutX="165.0" layoutY="341.0" mnemonicParsing="false" onAction="#handleRegisterBtn" prefHeight="37.0" prefWidth="271.0" style="-fx-background-color: lightGreen; -fx-border-radius: 30;" text="REGISTER" textFill="#ffffffc9">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button id="loginBtn" fx:id="loginBtn" layoutX="513.0" layoutY="399.0" mnemonicParsing="false" onAction="#handleLoginBtn" style="-fx-background-color: white;" text="Login Now" textFill="#36d074">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Button>
+      <Pane id="pane" fx:id="pane" disable="true" prefHeight="439.0" prefWidth="539.0">
+         <children>
+            <ProgressIndicator id="progressIndicator" fx:id="progressIndicator" layoutX="270.0" layoutY="166.0" prefHeight="53.0" prefWidth="69.0" visible="false" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
