@@ -17,6 +17,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -52,6 +53,10 @@ public class DashboardController implements Initializable {
     TableColumn TotalCrConsumedWards;
     @FXML
     TableColumn TotalCrRemaingWards;
+    @FXML
+    ImageView detailsImage;
+    @FXML
+    Button detailsBtn;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -71,6 +76,10 @@ public class DashboardController implements Initializable {
             
         }
         hospitals.setItems(data);
+        if(new Hospital().HasDetails(Hospital.oHospital.Id)){
+            detailsImage.setDisable(true);
+            detailsBtn.setDisable(true);
+        }
         
     }    
     

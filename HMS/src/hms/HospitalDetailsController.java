@@ -39,6 +39,7 @@ public class HospitalDetailsController implements Initializable {
     TextField totalIcu;
     @FXML
     ComboBox status;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO

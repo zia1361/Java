@@ -33,14 +33,14 @@
             <Image url="@Images/doctor.png" />
          </image>
       </ImageView>
-      <Button alignment="BOTTOM_CENTER" layoutX="421.0" layoutY="2.0" mnemonicParsing="false" onAction="#handleAddDetailsBtn" prefHeight="190.0" prefWidth="133.0" style="-fx-background-color: white; -fx-border-color: lightgreen; -fx-border-radius: 15; -fx-border-width: 2;" text="ADD DETAILS" textFill="#6ed043" />
-      <ImageView fitHeight="110.0" fitWidth="110.0" layoutX="432.0" layoutY="24.0" onMouseClicked="#handleAddDetailsImage" pickOnBounds="true" preserveRatio="true">
+      <Button fx:id="detailsBtn" alignment="BOTTOM_CENTER" layoutX="421.0" layoutY="2.0" mnemonicParsing="false" onAction="#handleAddDetailsBtn" prefHeight="190.0" prefWidth="133.0" style="-fx-background-color: white; -fx-border-color: lightgreen; -fx-border-radius: 15; -fx-border-width: 2;" text="ADD DETAILS" textFill="#6ed043" />
+      <ImageView fx:id="detailsImage" fitHeight="110.0" fitWidth="110.0" layoutX="432.0" layoutY="24.0" onMouseClicked="#handleAddDetailsImage" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Images/details.png" />
          </image>
       </ImageView>
-      <Button alignment="BOTTOM_CENTER" layoutX="563.0" layoutY="2.0" mnemonicParsing="false" onAction="#handleProfileBtn" prefHeight="190.0" prefWidth="133.0" style="-fx-background-color: white; -fx-border-color: lightgreen; -fx-border-radius: 15; -fx-border-width: 2;" text="MY PROFILE" textFill="#6ed043" />
-      <ImageView fitHeight="110.0" fitWidth="110.0" layoutX="574.0" layoutY="14.0" onMouseClicked="#handleProfileImage" pickOnBounds="true" preserveRatio="true">
+      <Button fx:id="profileBtn" alignment="BOTTOM_CENTER" layoutX="563.0" layoutY="2.0" mnemonicParsing="false" onAction="#handleProfileBtn" prefHeight="190.0" prefWidth="133.0" style="-fx-background-color: white; -fx-border-color: lightgreen; -fx-border-radius: 15; -fx-border-width: 2;" text="MY PROFILE" textFill="#6ed043" />
+      <ImageView fx:id="profileImage" fitHeight="110.0" fitWidth="110.0" layoutX="574.0" layoutY="14.0" onMouseClicked="#handleProfileImage" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Images/prifile.png" />
          </image>

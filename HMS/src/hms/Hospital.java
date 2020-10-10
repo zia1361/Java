@@ -14,7 +14,10 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.ProgressIndicator;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -32,6 +35,7 @@ public class Hospital {
     public String LoginId;
     public String Password;
     public int TotalICU;
+    public int StatusId;
     private int TotalDoctors;
     private int TotalPatients;
     private int TotalStaff;
@@ -306,22 +310,29 @@ public class Hospital {
             PreparedStatement pst = con.prepareStatement(query);
             int result = pst.executeUpdate();
             if(result > 0){
-                query = "UPDATE HospitalDetails SET ";
-                query += "TotalICU=" + oHospital.TotalICU +",";
-                if(oHospital.HasCoronaWards)
-                    query += "HasCoronaWards=1,";
-                else
-                    query += "HasCoronaWards=0,";
-                query += "TotalCoronaWards=" + oHospital.TotalCrWards + ",";
-                query += "ConsumedCoronaWards=" + oHospital.TotalCrConsumedWards + ",";
-                query += "RemainingCoronaWards=" + (oHospital.TotalCrWards - oHospital.TotalCrConsumedWards) +" WHERE HospitalId = " + id;
+                query = "SELECT * from HospitalDetails WHERE Id = " + id;
                 pst = con.prepareStatement(query);
-                result = pst.executeUpdate();
+                ResultSet oSet = pst.executeQuery();
+                if(oSet.next()){
+                    query = "UPDATE HospitalDetails SET ";
+                    query += "StatusId=" + oHospital.StatusId +",";
+                    query += "TotalICU=" + oHospital.TotalICU +",";
+                    if(oHospital.HasCoronaWards)
+                        query += "HasCoronaWards=1,";
+                    else
+                        query += "HasCoronaWards=0,";
+                    query += "TotalCoronaWards=" + oHospital.TotalCrWards + ",";
+//                    query += "ConsumedCoronaWards=" + oHospital.TotalCrConsumedWards + ",";
+                    query += "RemainingCoronaWards=" + (oHospital.TotalCrWards - oSet.getInt(6)) +" WHERE HospitalId = " + id;
+                    pst = con.prepareStatement(query);
+                    result = pst.executeUpdate();
                 
-                if(result > 0)
-                    JOptionPane.showMessageDialog(null, "Successfully Updated");
-                else
-                    JOptionPane.showMessageDialog(null, "Oops! Something Went Wrong. Please Try again or Contact Our Support." );
+                    if(result > 0)
+                        JOptionPane.showMessageDialog(null, "Successfully Updated");
+                    else
+                        JOptionPane.showMessageDialog(null, "Oops! Something Went Wrong. Please Try again or Contact Our Support." );
+                }
+                
             }
                 
             else
@@ -333,5 +344,67 @@ public class Hospital {
         }
     }
     
+    public boolean HasDetails(int Id){
+        boolean hasDetails = false;
+        try{
+            Connection con = null;
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver"); 
+            con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=HMS;user=TECHFIXER;password=0786;");
+            
+             String query = "SELECT * from HospitalDetails WHERE Id = " + Id;
+             PreparedStatement pst = con.prepareStatement(query);
+             pst = con.prepareStatement(query);
+             ResultSet oSet = pst.executeQuery();
+             if(oSet.next()){
+                hasDetails = true;
+             }else{
+                hasDetails = false;
+             }
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
+        return hasDetails;
+    }
     
+    public void BindData(CheckBox oCBox, TextField totalCrWards, TextField totalIcu, ComboBox status, TextField loginId, TextField email, TextField phoneNumber, TextField address, TextField name, TextField password){
+        try{
+            Connection con = null;
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver"); 
+            con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=HMS;user=TECHFIXER;password=0786;");
+            System.out.println("connected to db");
+            String query = "SELECT * from Hospital where Id = " + Hospital.oHospital.Id + "AND isActive = 1 AND isDeleted = 0";
+            PreparedStatement pst=con.prepareStatement(query);
+            ResultSet oResult = pst.executeQuery();
+            if(oResult.next())
+            {
+                name.setText(oResult.getString(2));
+                email.setText(oResult.getString(5));
+                address.setText(oResult.getString(3));
+                phoneNumber.setText(oResult.getString(4));
+                loginId.setText(oResult.getString(9));
+                password.setText(oResult.getString(10));
+                
+                query = "SELECT * from HospitalDetails where HospitalId = " + Hospital.oHospital.Id;
+                pst=con.prepareStatement(query);
+                oResult = null;
+                oResult = pst.executeQuery();
+                if(oResult.next()){
+                    
+                    totalIcu.setText(String.valueOf(oResult.getInt(3)));
+                    totalCrWards.setText(String.valueOf(oResult.getInt(8)));
+                    oCBox.setSelected(oResult.getBoolean(5));
+                    status.getSelectionModel().select(oResult.getInt(4) - 1);
+                    totalCrWards.setDisable(!oResult.getBoolean(5));
+//                    this.HasCoronaWards = oResult.getBoolean(5);
+//                    this.TotalCrConsumedWards = oResult.getInt(6);
+//                    this.TotalCrRemaingWards = oResult.getInt(7);
+//                    this.TotalCrWards = oResult.getInt(8);
+                }
+        }
+        }
+        catch(Exception ex){
+           ex.printStackTrace();
+        }
+        
+    }
 }

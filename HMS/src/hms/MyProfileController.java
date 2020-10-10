@@ -15,6 +15,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
@@ -33,9 +35,35 @@ public class MyProfileController implements Initializable {
     CheckBox oCBox;
     @FXML
     TextField totalCrWards;
-    @Override
+    @FXML
+    TextField totalIcu;
+    @FXML
+    ComboBox status;
+    @FXML
+    TextField loginId;
+    @FXML
+    TextField email;
+    @FXML
+    TextField phoneNumber;
+    @FXML
+    TextField address;
+    @FXML
+    TextField name;
+    @FXML
+    TextField password;
+    @FXML
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        
+        if(!new Hospital().HasDetails(Hospital.oHospital.Id)){
+            oCBox.setDisable(true);
+            status.setDisable(true);
+            totalCrWards.setDisable(true);
+            totalIcu.setDisable(true);
+        }else{
+            new HospitalStatus().BindStatuses(status);
+            new Hospital().BindData(oCBox, totalCrWards, totalIcu, status, loginId, email, phoneNumber, address, name, password);
+        }
     }
 
     @FXML
@@ -59,7 +87,28 @@ public class MyProfileController implements Initializable {
             System.out.println("Checked");
             System.out.println(oCBox.isSelected());
             totalCrWards.setDisable(!oCBox.isSelected());
-            totalCrWards.setText("");
+//            totalCrWards.setText("");
+        }catch(Exception ex){
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Oops! Something Went Wrong. Please Try again or Contact Our Support.");
+        }
+    }
+    @FXML
+    private void handleUpdateBtn(ActionEvent event){
+        try{
+            Hospital oHospital = new Hospital();
+            oHospital.Name = name.getText();
+            oHospital.Email = email.getText();
+            oHospital.Address = address.getText();
+            oHospital.PhoneNumber = phoneNumber.getText();
+            oHospital.LoginId = loginId.getText();
+            oHospital.Password = password.getText();
+            
+            oHospital.TotalCrWards = Integer.parseInt(totalCrWards.getText());
+            oHospital.HasCoronaWards = oCBox.isSelected();
+            oHospital.TotalICU = Integer.parseInt(totalIcu.getText());
+            oHospital.StatusId = Integer.parseInt(status.getValue().toString().split(" ")[0]);
+            new Hospital().UpdateHospital(oHospital, Hospital.oHospital.Id);
         }catch(Exception ex){
             ex.printStackTrace();
             JOptionPane.showMessageDialog(null, "Oops! Something Went Wrong. Please Try again or Contact Our Support.");
