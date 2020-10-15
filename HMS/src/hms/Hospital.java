@@ -190,6 +190,7 @@ public class Hospital {
             while(oResult.next())
             {
                 Hospital oHospital = new Hospital();
+                oHospital.Id = oResult.getInt(1);
                 oHospital.Name = oResult.getString(2);
                 oHospital.Address = oResult.getString(3);
                 oHospital.PhoneNumber = oResult.getString(4);
@@ -407,4 +408,7 @@ public class Hospital {
         }
         
     }
+    
+    
+
 }

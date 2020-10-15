@@ -20,8 +20,10 @@ public class Helper {
      private final SimpleIntegerProperty TotalCrWards;
      private final SimpleIntegerProperty TotalCrConsumedWards;
      private final SimpleIntegerProperty TotalCrRemaingWards;
+     private final SimpleIntegerProperty HospitalId;
      
-     Helper(String Name, String Address, boolean HasCoronaWards, int TotalCrWards, int TotalCrConsumedWards, int TotalCrRemaingWards){
+     Helper(int HospitalId, String Name, String Address, boolean HasCoronaWards, int TotalCrWards, int TotalCrConsumedWards, int TotalCrRemaingWards){
+         this.HospitalId = new SimpleIntegerProperty(HospitalId);
          this.Name = new SimpleStringProperty(Name);
          this.Address = new SimpleStringProperty(Address);
          this.HasCoronaWards = new SimpleBooleanProperty(HasCoronaWards);
@@ -30,6 +32,10 @@ public class Helper {
          this.TotalCrRemaingWards = new SimpleIntegerProperty(TotalCrRemaingWards);
      }
 
+    public int getId(){
+        return HospitalId.get();
+    } 
+     
     public String getName() {
         return Name.get();
     }

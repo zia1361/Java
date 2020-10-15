@@ -8,7 +8,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="747.0" prefWidth="921.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hms.DashboardController">
+<AnchorPane id="AnchorPane" prefHeight="749.0" prefWidth="924.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hms.DashboardController">
    <children>
       <TableView id="doctors" fx:id="hospitals" layoutY="194.0" prefHeight="555.0" prefWidth="921.0" style="-fx-background-color: white; -fx-border-color: lightgreen; -fx-border-width: 2;">
         <columns>

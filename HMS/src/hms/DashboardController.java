@@ -18,11 +18,13 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 import javax.swing.JOptionPane;
 
 
@@ -53,6 +55,8 @@ public class DashboardController implements Initializable {
     TableColumn TotalCrConsumedWards;
     @FXML
     TableColumn TotalCrRemaingWards;
+//    @FXML
+//    TableColumn Actions;
     @FXML
     ImageView detailsImage;
     @FXML
@@ -62,20 +66,51 @@ public class DashboardController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         System.out.println("loaded");
-        Name.setCellValueFactory(new PropertyValueFactory<Helper,String>("Name"));
-        Address.setCellValueFactory(new PropertyValueFactory<Helper,String>("Address"));
-        HasCoronaWards.setCellValueFactory(new PropertyValueFactory<Helper,Boolean>("HasCoronaWards"));
-        TotalCrWards.setCellValueFactory(new PropertyValueFactory<Helper,Integer>("TotalCrWards"));
-        TotalCrConsumedWards.setCellValueFactory(new PropertyValueFactory<Helper,Integer>("TotalCrConsumedWards"));
-        TotalCrRemaingWards.setCellValueFactory(new PropertyValueFactory<Helper,Integer>("TotalCrRemaingWards"));
-        
         final ObservableList<Helper> data = FXCollections.observableArrayList();
+        Name.setCellValueFactory(new PropertyValueFactory<>("Name"));
+        Address.setCellValueFactory(new PropertyValueFactory<>("Address"));
+        HasCoronaWards.setCellValueFactory(new PropertyValueFactory<>("HasCoronaWards"));
+        TotalCrWards.setCellValueFactory(new PropertyValueFactory<>("TotalCrWards"));
+        TotalCrConsumedWards.setCellValueFactory(new PropertyValueFactory<>("TotalCrConsumedWards"));
+        TotalCrRemaingWards.setCellValueFactory(new PropertyValueFactory<>("TotalCrRemaingWards"));
+//        Actions.setCellValueFactory(new PropertyValueFactory<>("DUMMY"));
+//        Callback<TableColumn<Helper, String>, TableCell<Helper, String>> cellFactory
+//                = //
+//                new Callback<TableColumn<Helper, String>, TableCell<Helper, String>>() {
+//            @Override
+//            public TableCell call(final TableColumn<Helper, String> param) {
+//                final TableCell<Helper, String> cell = new TableCell<Helper, String>() {
+//
+//                    final Button btn = new Button("Just Do It");
+//
+//                    @Override
+//                    public void updateItem(String item, boolean empty) {
+//                        super.updateItem(item, empty);
+//                        if (empty) {
+//                            setGraphic(null);
+//                            setText(null);
+//                        } else {
+//                            btn.setOnAction(event -> {
+//                                Helper person = getTableView().getItems().get(getIndex());
+//                                hospitals.getItems().remove(person);
+//                            });
+//                            setGraphic(btn);
+//                            setText(null);
+//                        }
+//                    }
+//                };
+//                return cell;
+//            }
+//        };
+//        Actions.setCellFactory(cellFactory);
+        
         for(Hospital oHospital: new Hospital().GetHospitalsData()){
-            data.add(new Helper(oHospital.Name, oHospital.Address, oHospital.HasCoronaWards, oHospital.TotalCrWards, oHospital.TotalCrConsumedWards, oHospital.TotalCrRemaingWards)
+            data.add(new Helper(oHospital.Id ,oHospital.Name, oHospital.Address, oHospital.HasCoronaWards, oHospital.TotalCrWards, oHospital.TotalCrConsumedWards, oHospital.TotalCrRemaingWards)
             );
             
         }
         hospitals.setItems(data);
+        
         if(new Hospital().HasDetails(Hospital.oHospital.Id)){
             detailsImage.setDisable(true);
             detailsBtn.setDisable(true);
