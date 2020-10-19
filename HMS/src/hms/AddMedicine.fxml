@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="557.0" prefWidth="921.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hms.AddMedicineController">
+   <children>
+      <TableView fx:id="medicineView" focusTraversable="false" layoutY="198.0" prefHeight="359.0" prefWidth="921.0">
+        <columns>
+            <TableColumn fx:id="tableMedName" prefWidth="522.0" text="Medicine Name" />
+            <TableColumn fx:id="tablemedActiveS" minWidth="0.0" prefWidth="116.0" text="Active Status" />
+            <TableColumn fx:id="tablemedTime" minWidth="0.0" prefWidth="160.0" text="Timing" />
+            <TableColumn fx:id="tableAction" minWidth="0.0" prefWidth="122.0" text="Action" />
+        </columns>
+      </TableView>
+      <Button fx:id="btnBack" focusTraversable="false" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleButtonAction" style="-fx-background-color: white;" text="BACK" textFill="LIGHTGREEN">
+         <font>
+            <Font size="17.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <TextField fx:id="MedName" alignment="CENTER" focusTraversable="false" layoutX="153.0" layoutY="46.0" prefHeight="42.0" prefWidth="594.0" promptText="Enter Medicine Name" style="-fx-background-color: white; -fx-border-color: lightgreen; -fx-border-radius: 30; -fx-border-width: 2;">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </TextField>
+      <Button fx:id="MedAddBtn" layoutX="278.0" layoutY="147.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="40.0" prefWidth="365.0" style="-fx-background-color: lightgreen; -fx-border-color: lightgreen;" text="Add" textFill="WHITE">
+         <font>
+            <Font size="17.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <ComboBox fx:id="hour" focusTraversable="false" layoutX="402.0" layoutY="102.0" prefHeight="29.0" prefWidth="96.0" promptText="Hour" style="-fx-background-color: white; -fx-border-color: lightgreen; -fx-border-radius: 30; -fx-border-width: 2;" />
+      <Label layoutX="302.0" layoutY="101.0" text="Enter Time :" textFill="#8d8181">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="504.0" layoutY="102.0" text=":">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="min" focusTraversable="false" layoutX="515.0" layoutY="102.0" prefHeight="29.0" prefWidth="96.0" promptText="Minuites" style="-fx-background-color: white; -fx-border-color: lightgreen; -fx-border-radius: 30; -fx-border-width: 2;" />
+   </children>
+</AnchorPane>

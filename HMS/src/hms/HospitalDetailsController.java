@@ -55,7 +55,7 @@ public class HospitalDetailsController implements Initializable {
             
             Stage oStage = (Stage)((Node)event.getSource()).getScene().getWindow();
             oStage.setScene(scene);
-            oStage.setTitle("Add Details");
+            oStage.setTitle("DASHBOARD");
             oStage.show();
         }catch(Exception ex){
             ex.printStackTrace();
@@ -86,16 +86,8 @@ public class HospitalDetailsController implements Initializable {
             System.out.println(Hospital.oHospital.Id);
             new Hospital().AddHospitalDetails(Hospital.oHospital.Id, (totalIcu.getText() != "" ? Integer.parseInt(totalIcu.getText()) : 0), oCBox.isSelected(),
                     oCBox.isSelected() ? totalCrWards.getText() != "" ? Integer.parseInt(totalCrWards.getText()) :0 : 0, Integer.parseInt(status.getValue().toString().split(" ")[0]));
-//            totalCrWards.setDisable(!oCBox.isSelected());
-            
-//            Parent register = FXMLLoader.load(getClass().getResource("Dashboard.fxml"));
-//            Scene scene = new Scene(register);
-//            
-//            Stage oStage = (Stage)((Node)event.getSource()).getScene().getWindow();
-//            oStage.setScene(scene);
-//            oStage.setTitle("Add Details");
-//            oStage.show();
-        }catch(Exception ex){
+        }
+        catch(Exception ex){
             ex.printStackTrace();
             JOptionPane.showMessageDialog(null, "Oops! Something Went Wrong. Please Try again or Contact Our Support.");
         }

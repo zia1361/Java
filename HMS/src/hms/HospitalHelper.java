@@ -13,7 +13,7 @@ import javafx.beans.property.SimpleStringProperty;
  *
  * @author A.U Computer
  */
-public class Helper {
+public class HospitalHelper {
      private final SimpleStringProperty Name;
      private final SimpleStringProperty Address;
      private final SimpleBooleanProperty HasCoronaWards;
@@ -22,7 +22,8 @@ public class Helper {
      private final SimpleIntegerProperty TotalCrRemaingWards;
      private final SimpleIntegerProperty HospitalId;
      
-     Helper(int HospitalId, String Name, String Address, boolean HasCoronaWards, int TotalCrWards, int TotalCrConsumedWards, int TotalCrRemaingWards){
+     
+     HospitalHelper(int HospitalId, String Name, String Address, boolean HasCoronaWards, int TotalCrWards, int TotalCrConsumedWards, int TotalCrRemaingWards){
          this.HospitalId = new SimpleIntegerProperty(HospitalId);
          this.Name = new SimpleStringProperty(Name);
          this.Address = new SimpleStringProperty(Address);

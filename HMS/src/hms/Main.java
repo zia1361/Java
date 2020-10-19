@@ -5,17 +5,19 @@
  */
 package hms;
 
+import hms.Hospital;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import sun.security.jgss.LoginConfigImpl;
 
 /**
  *
  * @author A.U Computer
  */
-public class HMS extends Application {
+public class Main extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
@@ -28,6 +30,7 @@ public class HMS extends Application {
         
         stage.setScene(scene);
         stage.setResizable(false);
+        stage.setTitle("LOGIN");
         stage.show();
         
     }

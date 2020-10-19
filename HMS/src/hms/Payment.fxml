@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="557.0" prefWidth="921.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hms.PaymentController">
+   <children>
+      <Button fx:id="btnBack" focusTraversable="false" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleButtonAction" style="-fx-background-color: white;" text="BACK" textFill="LIGHTGREEN">
+         <font>
+            <Font size="17.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <TableView fx:id="paymentTable" focusTraversable="false" layoutY="207.0" prefHeight="351.0" prefWidth="921.0">
+        <columns>
+            <TableColumn fx:id="tblpaymentDisease" prefWidth="267.0" text="Disease Name" />
+            <TableColumn fx:id="tbltotalPayment" prefWidth="197.0" text="Total Payment" />
+            <TableColumn fx:id="tblpaymentPaid" prefWidth="237.0" text="Payment Paid" />
+            <TableColumn fx:id="tblremaningPayment" prefWidth="219.0" text="Remaning Payment" />
+        </columns>
+      </TableView>
+      <TextField fx:id="totalPayment" alignment="CENTER" focusTraversable="false" layoutX="108.0" layoutY="49.0" prefHeight="42.0" prefWidth="353.0" promptText="Enter Total Payment" style="-fx-background-color: white; -fx-border-color: lightgreen; -fx-border-radius: 30; -fx-border-width: 2;">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </TextField>
+      <Button fx:id="btnAddPayment" layoutX="194.0" layoutY="155.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="40.0" prefWidth="533.0" style="-fx-background-color: lightgreen; -fx-border-color: lightgreen;" text="Add Payment" textFill="WHITE">
+         <font>
+            <Font size="17.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <TextField fx:id="paymentToPaid" alignment="CENTER" focusTraversable="false" layoutX="108.0" layoutY="105.0" prefHeight="42.0" prefWidth="353.0" promptText="Enter Payment Paid" style="-fx-background-color: white; -fx-border-color: lightgreen; -fx-border-radius: 30; -fx-border-width: 2;">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </TextField>
+      <ComboBox fx:id="addDisease" focusTraversable="false" layoutX="494.0" layoutY="49.0" onAction="#handleButtonAction" prefHeight="42.0" prefWidth="353.0" promptText="Add Disease" style="-fx-background-color: white; -fx-border-color: lightgreen; -fx-border-radius: 30; -fx-border-width: 2;">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ComboBox>
+   </children>
+</AnchorPane>

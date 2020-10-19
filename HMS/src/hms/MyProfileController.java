@@ -55,12 +55,18 @@ public class MyProfileController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         
-        if(!new Hospital().HasDetails(Hospital.oHospital.Id)){
+        if(!new Hospital().HasDetails()){
             oCBox.setDisable(true);
             status.setDisable(true);
             totalCrWards.setDisable(true);
             totalIcu.setDisable(true);
+            new HospitalStatus().BindStatuses(status);
+            new Hospital().BindData(oCBox, totalCrWards, totalIcu, status, loginId, email, phoneNumber, address, name, password);
         }else{
+            oCBox.setDisable(false);
+            status.setDisable(false);
+            totalCrWards.setDisable(false);
+            totalIcu.setDisable(false);
             new HospitalStatus().BindStatuses(status);
             new Hospital().BindData(oCBox, totalCrWards, totalIcu, status, loginId, email, phoneNumber, address, name, password);
         }
@@ -74,7 +80,7 @@ public class MyProfileController implements Initializable {
             
             Stage oStage = (Stage)((Node)event.getSource()).getScene().getWindow();
             oStage.setScene(scene);
-            oStage.setTitle("Add Details");
+            oStage.setTitle("DASHBOARD");
             oStage.show();
         }catch(Exception ex){
             ex.printStackTrace();
@@ -87,7 +93,6 @@ public class MyProfileController implements Initializable {
             System.out.println("Checked");
             System.out.println(oCBox.isSelected());
             totalCrWards.setDisable(!oCBox.isSelected());
-//            totalCrWards.setText("");
         }catch(Exception ex){
             ex.printStackTrace();
             JOptionPane.showMessageDialog(null, "Oops! Something Went Wrong. Please Try again or Contact Our Support.");
@@ -101,14 +106,10 @@ public class MyProfileController implements Initializable {
             oHospital.Email = email.getText();
             oHospital.Address = address.getText();
             oHospital.PhoneNumber = phoneNumber.getText();
-            oHospital.LoginId = loginId.getText();
-            oHospital.Password = password.getText();
-            
             oHospital.TotalCrWards = Integer.parseInt(totalCrWards.getText());
             oHospital.HasCoronaWards = oCBox.isSelected();
-            oHospital.TotalICU = Integer.parseInt(totalIcu.getText());
             oHospital.StatusId = Integer.parseInt(status.getValue().toString().split(" ")[0]);
-            new Hospital().UpdateHospital(oHospital, Hospital.oHospital.Id);
+            new Hospital().UpdateHospital(oHospital, loginId.getText(), password.getText(), Integer.parseInt(totalIcu.getText()));
         }catch(Exception ex){
             ex.printStackTrace();
             JOptionPane.showMessageDialog(null, "Oops! Something Went Wrong. Please Try again or Contact Our Support.");

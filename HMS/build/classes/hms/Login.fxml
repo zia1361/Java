@@ -32,7 +32,7 @@
             <Font size="10.0" />
          </font>
       </Label>
-      <ImageView fitHeight="176.0" fitWidth="195.0" layoutX="170.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="154.0" fitWidth="176.0" layoutX="190.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Images/main.png" />
          </image>

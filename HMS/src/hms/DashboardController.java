@@ -7,6 +7,7 @@ package hms;
 
 import java.awt.event.MouseEvent;
 import java.net.URL;
+import java.time.LocalTime;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -42,7 +43,7 @@ public class DashboardController implements Initializable {
     @FXML
     ImageView imgPreview;
     @FXML
-    TableView<Helper> hospitals;
+    TableView<HospitalHelper> hospitals;
     @FXML
     TableColumn Name;
     @FXML
@@ -55,8 +56,6 @@ public class DashboardController implements Initializable {
     TableColumn TotalCrConsumedWards;
     @FXML
     TableColumn TotalCrRemaingWards;
-//    @FXML
-//    TableColumn Actions;
     @FXML
     ImageView detailsImage;
     @FXML
@@ -65,56 +64,20 @@ public class DashboardController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        System.out.println("loaded");
-        final ObservableList<Helper> data = FXCollections.observableArrayList();
+        final ObservableList<HospitalHelper> data = FXCollections.observableArrayList();
         Name.setCellValueFactory(new PropertyValueFactory<>("Name"));
         Address.setCellValueFactory(new PropertyValueFactory<>("Address"));
         HasCoronaWards.setCellValueFactory(new PropertyValueFactory<>("HasCoronaWards"));
         TotalCrWards.setCellValueFactory(new PropertyValueFactory<>("TotalCrWards"));
         TotalCrConsumedWards.setCellValueFactory(new PropertyValueFactory<>("TotalCrConsumedWards"));
         TotalCrRemaingWards.setCellValueFactory(new PropertyValueFactory<>("TotalCrRemaingWards"));
-//        Actions.setCellValueFactory(new PropertyValueFactory<>("DUMMY"));
-//        Callback<TableColumn<Helper, String>, TableCell<Helper, String>> cellFactory
-//                = //
-//                new Callback<TableColumn<Helper, String>, TableCell<Helper, String>>() {
-//            @Override
-//            public TableCell call(final TableColumn<Helper, String> param) {
-//                final TableCell<Helper, String> cell = new TableCell<Helper, String>() {
-//
-//                    final Button btn = new Button("Just Do It");
-//
-//                    @Override
-//                    public void updateItem(String item, boolean empty) {
-//                        super.updateItem(item, empty);
-//                        if (empty) {
-//                            setGraphic(null);
-//                            setText(null);
-//                        } else {
-//                            btn.setOnAction(event -> {
-//                                Helper person = getTableView().getItems().get(getIndex());
-//                                hospitals.getItems().remove(person);
-//                            });
-//                            setGraphic(btn);
-//                            setText(null);
-//                        }
-//                    }
-//                };
-//                return cell;
-//            }
-//        };
-//        Actions.setCellFactory(cellFactory);
         
         for(Hospital oHospital: new Hospital().GetHospitalsData()){
-            data.add(new Helper(oHospital.Id ,oHospital.Name, oHospital.Address, oHospital.HasCoronaWards, oHospital.TotalCrWards, oHospital.TotalCrConsumedWards, oHospital.TotalCrRemaingWards)
+            data.add(new HospitalHelper(oHospital.Id ,oHospital.Name, oHospital.Address, oHospital.HasCoronaWards, oHospital.TotalCrWards, oHospital.TotalCrConsumedWards, oHospital.TotalCrRemaingWards)
             );
             
         }
         hospitals.setItems(data);
-        
-        if(new Hospital().HasDetails(Hospital.oHospital.Id)){
-            detailsImage.setDisable(true);
-            detailsBtn.setDisable(true);
-        }
         
     }    
     
@@ -124,9 +87,11 @@ public class DashboardController implements Initializable {
     private void handleLogoutBtn(ActionEvent event){
         try{
             Parent register = FXMLLoader.load(getClass().getResource("Login.fxml"));
+            
             Scene scene = new Scene(register);
             Stage oStage = (Stage)((Node)event.getSource()).getScene().getWindow();
             oStage.setScene(scene);
+            oStage.setTitle("LOGIN");
             oStage.show();
         }catch(Exception ex){
             ex.printStackTrace();
@@ -135,12 +100,12 @@ public class DashboardController implements Initializable {
     }
     @FXML
     private void handleLogoutImage(){
-        System.out.println("Clicked");
         try{
             Parent register = FXMLLoader.load(getClass().getResource("Login.fxml"));
             Scene scene = new Scene(register);
             Stage oStage = (Stage)imgPreview.getScene().getWindow();
             oStage.setScene(scene);
+            oStage.setTitle("LOGIN");
             oStage.show();
         }catch(Exception ex){
             ex.printStackTrace();
@@ -149,11 +114,16 @@ public class DashboardController implements Initializable {
     }
      @FXML
     private void handleAddDetailsBtn(ActionEvent event){
+        if(new Hospital().HasDetails()){
+            JOptionPane.showMessageDialog(null, "Details Already Added. Kindly try editing them.");
+            return;
+        }
         try{
             Parent register = FXMLLoader.load(getClass().getResource("HospitalDetails.fxml"));
             Scene scene = new Scene(register);
             Stage oStage = (Stage)((Node)event.getSource()).getScene().getWindow();
             oStage.setScene(scene);
+            oStage.setTitle("ADD DETAILS");
             oStage.show();
         }catch(Exception ex){
             ex.printStackTrace();
@@ -162,12 +132,16 @@ public class DashboardController implements Initializable {
     }
     @FXML
     private void handleAddDetailsImage(){
-        System.out.println("Clicked");
+        if(new Hospital().HasDetails()){
+            JOptionPane.showMessageDialog(null, "Details Already Added. Kindly try editing them.");
+            return;
+        }
         try{
             Parent register = FXMLLoader.load(getClass().getResource("HospitalDetails.fxml"));
             Scene scene = new Scene(register);
             Stage oStage = (Stage)imgPreview.getScene().getWindow();
             oStage.setScene(scene);
+            oStage.setTitle("ADD DETAILS");
             oStage.show();
         }catch(Exception ex){
             ex.printStackTrace();
@@ -182,6 +156,7 @@ public class DashboardController implements Initializable {
             Scene scene = new Scene(register);
             Stage oStage = (Stage)((Node)event.getSource()).getScene().getWindow();
             oStage.setScene(scene);
+            oStage.setTitle("MY PROFILE");
             oStage.show();
         }catch(Exception ex){
             ex.printStackTrace();
@@ -196,10 +171,97 @@ public class DashboardController implements Initializable {
             Scene scene = new Scene(register);
             Stage oStage = (Stage)imgPreview.getScene().getWindow();
             oStage.setScene(scene);
+            oStage.setTitle("MY PROFILE");
             oStage.show();
         }catch(Exception ex){
             ex.printStackTrace();
             JOptionPane.showMessageDialog(null, "Oops! Something Went Wrong. Please Try again or Contact Our Support.");
         }
     }
+    @FXML
+    private void handleDoctorBtn(ActionEvent event){
+        try{
+            Parent register = FXMLLoader.load(getClass().getResource("AddDoctor.fxml"));
+            Scene scene = new Scene(register);
+            Stage oStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            oStage.setScene(scene);
+            oStage.setTitle("ADD DOCTOR");
+            oStage.show();
+        }catch(Exception ex){
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Oops! Something Went Wrong. Please Try again or Contact Our Support.");
+        }
+    }
+    @FXML
+    private void handleDoctorImage(){
+        System.out.println("Clicked");
+        try{
+            Parent register = FXMLLoader.load(getClass().getResource("AddDoctor.fxml"));
+            Scene scene = new Scene(register);
+            Stage oStage = (Stage)imgPreview.getScene().getWindow();
+            oStage.setScene(scene);
+            oStage.setTitle("ADD DOCTOR");
+            oStage.show();
+        }catch(Exception ex){
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Oops! Something Went Wrong. Please Try again or Contact Our Support.");
+        }
+    }
+    @FXML
+    private void handleStaffBtn(ActionEvent event){
+        try{
+            Parent register = FXMLLoader.load(getClass().getResource("AddStaff.fxml"));
+            Scene scene = new Scene(register);
+            Stage oStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            oStage.setScene(scene);
+            oStage.setTitle("ADD STAFF");
+            oStage.show();
+        }catch(Exception ex){
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Oops! Something Went Wrong. Please Try again or Contact Our Support.");
+        }
+    }
+    @FXML
+    private void handleStaffImage(){
+        try{
+            Parent register = FXMLLoader.load(getClass().getResource("AddStaff.fxml"));
+            Scene scene = new Scene(register);
+            Stage oStage = (Stage)imgPreview.getScene().getWindow();
+            oStage.setScene(scene);
+            oStage.setTitle("ADD STAFF");
+            oStage.show();
+        }catch(Exception ex){
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Oops! Something Went Wrong. Please Try again or Contact Our Support.");
+        }
+    }
+    @FXML
+    private void handlePatientBtn(ActionEvent event){
+        try{
+            Parent register = FXMLLoader.load(getClass().getResource("RegisterPatient.fxml"));
+            Scene scene = new Scene(register);
+            Stage oStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            oStage.setScene(scene);
+            oStage.setTitle("ADD PATIENT");
+            oStage.show();
+        }catch(Exception ex){
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Oops! Something Went Wrong. Please Try again or Contact Our Support.");
+        }
+    }
+    @FXML
+    private void handlePatientImage(){
+        try{
+            Parent register = FXMLLoader.load(getClass().getResource("RegisterPatient.fxml"));
+            Scene scene = new Scene(register);
+            Stage oStage = (Stage)imgPreview.getScene().getWindow();
+            oStage.setScene(scene);
+            oStage.setTitle("ADD PATIENT");
+            oStage.show();
+        }catch(Exception ex){
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Oops! Something Went Wrong. Please Try again or Contact Our Support.");
+        }
+    }
+    
 }

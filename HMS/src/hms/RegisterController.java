@@ -51,10 +51,7 @@ public class RegisterController implements Initializable {
     
     @FXML
      private void handleRegisterBtn(ActionEvent event) {
-        System.out.println("You clicked me!");
-//        System.out.println(Hospital.oHospital.LoginId);
-//        System.out.println(Hospital.oHospital.Id);
-//        System.out.println(new Hospital().IsAuthenticated()); 
+        
         if(loginId.getText().equals("")){
             JOptionPane.showMessageDialog(null, "Kindly Enter LoginId");
             return;
@@ -79,14 +76,6 @@ public class RegisterController implements Initializable {
             JOptionPane.showMessageDialog(null, "Kindly Enter Phone#");
             return;
         }
-        
-        
-        System.out.println(loginId.getText());
-        System.out.println(password.getText());
-        System.out.println(email.getText());
-        System.out.println(phoneNumber.getText());
-        System.out.println(name.getText());
-        System.out.println(address.getText());
         pane.setDisable(false);
         progressIndicator.setVisible(true);
         
@@ -95,20 +84,7 @@ public class RegisterController implements Initializable {
         oHospital.Email = email.getText();
         oHospital.Address = address.getText();
         oHospital.PhoneNumber = phoneNumber.getText();
-        oHospital.LoginId = loginId.getText();
-        oHospital.Password = password.getText();
-        int id = oHospital.RegisterHospital(oHospital, progressIndicator, pane);
-        
-        
-//        int Id = oHospital.RegisterHospital(oHospital, progressIndicator, pane);
-//        System.out.println(Id);
-//        if(oHospital.IsAutenticated){
-//            
-//        }else{
-//            progressIndicator.setVisible(false);
-//            pane.setDisable(true);
-//            JOptionPane.showMessageDialog(null, "Registeration Failed. Try Again or Contact Our Support");
-//        }
+        oHospital.RegisterHospital(oHospital, progressIndicator, pane, loginId.getText(), password.getText());
     }
     
     @FXML
@@ -118,6 +94,7 @@ public class RegisterController implements Initializable {
             Scene scene = new Scene(register);
             Stage oStage = (Stage)((Node)event.getSource()).getScene().getWindow();
             oStage.setScene(scene);
+            oStage.setTitle("LOGIN");
             oStage.show();
         }catch(Exception ex){
             ex.printStackTrace();

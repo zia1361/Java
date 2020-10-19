@@ -5,6 +5,7 @@
  */
 package hms;
 
+import hms.Hospital;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
@@ -42,7 +43,7 @@ public class LoginController implements Initializable {
     
     @FXML
     private void handleButtonAction(ActionEvent event) {
-        System.out.println("You clicked me!");
+       
         if(loginId.getText().equals("")){
             JOptionPane.showMessageDialog(null, "Kindly Enter LoginId");
             return;
@@ -51,12 +52,6 @@ public class LoginController implements Initializable {
             JOptionPane.showMessageDialog(null, "Kindly Enter Password");
             return;
         }
-//          List<Hospital> oHospitals = new Hospital().GetHospitalsData();
-//          for(Hospital oHospital: oHospitals){
-//              System.out.println(oHospital.Name);
-//          }
-        System.out.println(loginId.getText());
-        System.out.println(password.getText());
         progressPane.setDisable(false);
         progress.setVisible(true);
         
@@ -70,6 +65,7 @@ public class LoginController implements Initializable {
                 Scene scene = new Scene(register);
                 Stage oStage = (Stage)((Node)event.getSource()).getScene().getWindow();
                 oStage.setScene(scene);
+                oStage.setTitle("DASHBOARD");
                 oStage.show();
            }catch(Exception ex){
                ex.printStackTrace();
@@ -80,22 +76,6 @@ public class LoginController implements Initializable {
             progressPane.setDisable(true);
             JOptionPane.showMessageDialog(null, "Login Failed. Inavlid Credentials");
         }
-//        oHospital.Name = "Abc";
-//        oHospital.Address = "Abc";
-//        oHospital.PhoneNumber = "Abc";
-//        oHospital.Email = "Abc";
-//        oHospital.LoginId = "Abc";
-//        oHospital.Password = "Abc";
-//        oHospital.HasCoronaWards = true;
-//        oHospital.TotalICU = 10;
-//        oHospital.TotalCrWards = 20;
-//        oHospital.TotalCrConsumedWards = 10;
-//        oHospital.UpdateHospital(oHospital, 1);
-        
-//        System.out.println(oHospital.IsAutenticated);
-//        System.out.println(oHospital.GetTotalCrWards());
-//        System.out.println(oHospital.GetRemainingCrWards());
-//        System.out.println(oHospital.GetCosumedCrWards());
     }
     
     @FXML
@@ -105,6 +85,7 @@ public class LoginController implements Initializable {
             Scene scene = new Scene(register);
             Stage oStage = (Stage)((Node)event.getSource()).getScene().getWindow();
             oStage.setScene(scene);
+            oStage.setTitle("REGISTER");
             oStage.show();
         }catch(Exception ex){
             ex.printStackTrace();

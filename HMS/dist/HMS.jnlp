@@ -8,12 +8,12 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="HMS.jar" size="618091" download="eager" />
+    <jar href="HMS.jar" size="1254243" download="eager" />
     <jar href="lib\mssql-jdbc-8.4.1.jre8.jar" size="1300917" download="eager" />
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="HMS" >
     <param name="requiredFXVersion" value="8.0+"/>
   </applet-desc>
-  <jfx:javafx-desc  width="800" height="600" main-class="hms.HMS"  name="HMS" />
+  <jfx:javafx-desc  width="800" height="600" main-class="hms.Main"  name="HMS" />
   <update check="always"/>
 </jnlp>

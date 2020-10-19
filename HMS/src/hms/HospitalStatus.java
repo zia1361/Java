@@ -56,13 +56,8 @@ public class HospitalStatus extends Hospital{
         
         try{
             oStatuses = new ArrayList<HospitalStatus>();
-            Connection con = null;
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver"); 
-            con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=HMS;user=TECHFIXER;password=0786;");
-            System.out.println("connected to db");
             String query = "SELECT * from HospitalStatus where isActive = 1 AND isDeleted = 0";
-            PreparedStatement pst=con.prepareStatement(query);
-            ResultSet oResults = pst.executeQuery();
+            ResultSet oResults = new Utils().GetResult(query);
             while(oResults.next()){
                 HospitalStatus oStatus = new HospitalStatus();
                 oStatus.Id.set(oResults.getInt(1));
@@ -81,21 +76,13 @@ public class HospitalStatus extends Hospital{
         
         try{
            
-            Connection con = null;
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver"); 
-            con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=HMS;user=TECHFIXER;password=0786;");
-            System.out.println("connected to db");
             String query = "SELECT * from HospitalStatus where isActive = 1 AND isDeleted = 0";
-            PreparedStatement pst=con.prepareStatement(query);
-            ResultSet oResults = pst.executeQuery();
-//            oBox.setCellFactory(new PropertyValueFactory<HospitalStatus,String>("StatusName"));
+            ResultSet oResults = new Utils().GetResult(query);
             oStatuses = new ArrayList<HospitalStatus>();
             ObservableList parentList = FXCollections.observableArrayList();
             while(oResults.next()){
                 System.out.println(oResults.getInt(1)+ ""+ oResults.getString(2));
                 parentList.add(oResults.getInt(1)+ " "+ oResults.getString(2));
-//                oStatuses.add(new HospitalStatus(oResults.getInt(1), oResults.getString(2)));
-//                oBox.getItems().add(oResults.getInt(1), oResults.getString(2));
                 
             }
             oBox.setItems(parentList);
