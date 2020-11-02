@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="557.0" prefWidth="921.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hms.AddDoctorController">
+   <children>
+      <VBox layoutX="204.0" layoutY="88.0" prefHeight="191.0" prefWidth="492.0" spacing="30.0">
+         <children>
+            <TextField fx:id="doctorName" alignment="CENTER" focusTraversable="false" prefHeight="42.0" prefWidth="359.0" promptText="Enter Name" style="-fx-background-color: white; -fx-border-color: lightgreen; -fx-border-radius: 30; -fx-border-width: 2;">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="doctorContact" alignment="CENTER" focusTraversable="false" layoutX="10.0" layoutY="72.0" prefHeight="42.0" prefWidth="359.0" promptText="Enter Contact Number" style="-fx-background-color: white; -fx-border-color: lightgreen; -fx-border-radius: 30; -fx-border-width: 2;">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="doctorEmail" alignment="CENTER" focusTraversable="false" prefHeight="42.0" prefWidth="359.0" promptText="Enter Email" style="-fx-border-color: lightgreen; -fx-border-radius: 30; -fx-border-width: 2; -fx-background-color: white;">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </TextField>
+         </children>
+      </VBox>
+      <VBox layoutX="204.0" layoutY="307.0" prefHeight="139.0" prefWidth="492.0" spacing="30.0">
+         <children>
+            <TextField fx:id="doctorAddress" alignment="CENTER" focusTraversable="false" prefHeight="42.0" prefWidth="359.0" promptText="Enter Address" style="-fx-background-color: white; -fx-border-color: lightgreen; -fx-border-radius: 30; -fx-border-width: 2;">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="doctorSpeciality" alignment="CENTER" focusTraversable="false" layoutX="10.0" layoutY="82.0" prefHeight="42.0" prefWidth="365.0" promptText="Enter Speciality" style="-fx-background-color: white; -fx-border-color: lightgreen; -fx-border-radius: 30; -fx-border-width: 2;">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </TextField>
+         </children>
+      </VBox>
+      <Button fx:id="Back" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleButtonActionBack" prefHeight="17.0" prefWidth="70.0" style="-fx-background-color: white;" text="BACK" textAlignment="CENTER" textFill="#91ed91">
+         <font>
+            <Font size="15.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="doctorBtnRegister" layoutX="365.0" layoutY="465.0" mnemonicParsing="false" onAction="#handleButtonActionRegister" prefHeight="38.0" prefWidth="171.0" style="-fx-background-color: lightgreen; -fx-border-color: lightgreen;" text="ADD" textFill="WHITE">
+         <font>
+            <Font size="17.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="btnViewAllDoctors" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="752.0" layoutY="512.0" mnemonicParsing="false" onAction="#handleButtonActionViewAllDoctors" style="-fx-background-color: white;" text="VIEW ALL DOCTORS" textAlignment="CENTER" textFill="LIGHTGREEN">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

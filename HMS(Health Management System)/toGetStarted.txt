@@ -1,0 +1,8 @@
+1: Open Utils.java and replace connection string database name, user, password with your
+credentials.
+
+2: Add driver for sql server
+
+3: Make a new Connection with your DataBase after restoring it with the given database.
+
+4: That's It.
